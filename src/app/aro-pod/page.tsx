@@ -8,15 +8,9 @@ export default function AROPodPage() {
       <div className="z-[100000] lg:relative w-full min-h-screen bg-black">
         <Header />
         <AAroPod 
-          showSpecs={true}
-          showFeatures={true}
           onPreorder={() => {
             // Handle preorder logic
             console.log('Preorder clicked');
-          }}
-          onLearnMore={() => {
-            // Handle learn more logic
-            console.log('Learn more clicked');
           }}
         />
       </div>

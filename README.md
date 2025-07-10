@@ -1,4 +1,4 @@
-Here is the ARO website
+Here is the ARO SHOP
 
 ## Getting Started
 

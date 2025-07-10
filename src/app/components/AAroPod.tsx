@@ -1,9 +1,7 @@
 'use client'
 import { Button } from "@/components/ui/button";
 
-export const AAroPod = ({
-  onPreorder,
-}: AAroPodProps = {}): JSX.Element => {
+export const AAroPod = ({onPreorder,}: AAroPodProps = {}): JSX.Element => {
   [
     { label: "Get a Node", href: "/get-a-node" },
     { label: "Blog", href: "/blog" },

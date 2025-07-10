@@ -1,18 +1,10 @@
 'use client'
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-
 
 export const AAroPod = ({
   onPreorder,
 }: AAroPodProps = {}): JSX.Element => {
-  const navItems = [
+  [
     { label: "Get a Node", href: "/get-a-node" },
     { label: "Blog", href: "/blog" },
     { label: "Docs", href: "/docs" },

@@ -11,7 +11,7 @@ const LinerGridentMap: { [k: string]: string } = {
   6: 'linear-gradient(124.57deg, #176123 -1000%, rgba(115, 115, 115, 0) 38.35%),linear-gradient(to right, #000, #000),linear-gradient(113.4deg, #44F54D -0.39%, #42474D 28.51%)',
 };
 
-const LinerGridentBorder = ({ className, children, type = '0', anim }: { className?: string, children?: React.ReactNode, type?: string, anim?: boolean }) => {
+const LinerGridentBorder = ({ className, children, type = '0',  }: { className?: string, children?: React.ReactNode, type?: string, anim?: boolean }) => {
   return (
     <div
       style={{

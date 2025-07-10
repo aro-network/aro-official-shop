@@ -2,7 +2,11 @@ name: build to page
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - dev
+      - main
+      - beta
+      - test
 
   workflow_dispatch:
 

@@ -1,9 +1,11 @@
 'use client'
 import { Button } from "@/components/ui/button";
 
-export const AAroPod = ({onPreorder,}: AAroPodProps = {}): JSX.Element => {
 
-
+export const AAroPod = ({
+  onPreorder,
+}: AAroPodProps = {}): JSX.Element => {
+ 
   return (
     <div
       className="bg-black flex flex-row justify-center w-full"

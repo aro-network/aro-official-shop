@@ -9,7 +9,6 @@ export default function AROPodPage() {
         <Header />
         <AAroPod 
           onPreorder={() => {
-            // Handle preorder logic
             console.log('Preorder clicked');
           }}
         />

@@ -4,7 +4,11 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/app/utils/cn";
 import TitleText from "./TitleText";
 import LinerGridentBorder from "./LinerGridentBorder";
-import AosAnimItem from "./AosAnimItem";
+// 临时移除AosAnimItem导入,后续需要添加正确的导入路径
+// import AosAnimItem from "./AosAnimItem";
+const AosAnimItem = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
 import { MBtn } from "./Header";
 
 const Badge = ({ className, children, ...props }: { className?: string; children: React.ReactNode; [key: string]: any }) => {
@@ -57,8 +61,10 @@ const NodeSelectionSection = () => {
       userFriendly: "User-friendly: ⭐⭐⭐",
       comingSoon: false,
       gradient:
-"bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"  },
-    {
+      "p-5 box-border bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06))," +
+      "linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] " +
+      "backdrop-blur-[12px] rounded-3xl flex-none order-0"  },
+      {
       id: "aro-lite",
       title: "ARO Lite",
       image: "/GetANodePicture/AroLite.png",
@@ -121,7 +127,7 @@ const NodeSelectionSection = () => {
           //   backgroundClip: 'padding-box, border-box',
           // }}
         >
-          <CardContent className="p-5 mo:p-4 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
+          <CardContent className="p-5 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
             <div className="inline-flex flex-col items-start mo:items-center gap-4 relative flex-[0_0_auto]">
               <div
                 className="relative w-[196px] h-[130px] mo:w-[140px] mo:h-[90px] bg-center bg-no-repeat bg-contain"
@@ -138,10 +144,10 @@ const NodeSelectionSection = () => {
               </Button>
             </div>
 
-            <div className="flex flex-col w-[265px] mo:w-full items-start mo:items-center gap-5 mo:gap-4 relative">
-              <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+            <div className="flex flex-col w-[265px] mo:w-full items-center gap-5 mo:gap-4 relative">
+              <div className="flex flex-col items-center gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
                 <div className="inline-flex items-center gap-2.5 relative flex-[0_0_auto]">
-                  <h3 className="w-fit mt-[-1.00px] font-medium text-white text-xl tracking-[0] leading-[30px] whitespace-nowrap relative [font-family:'Poppins',Helvetica]">
+                  <h3 className="w-fit mt-[-1.00px] font-medium text-white text-xl tracking-[0] leading-[30px] whitespace-nowrap relative [font-family:'Poppins',Helvetica] text-center">
                     {node.title}
                   </h3>
 
@@ -154,7 +160,7 @@ const NodeSelectionSection = () => {
                   )}
                 </div>
 
-                <div className="relative self-stretch [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px]">
+                <div className="relative self-stretch [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px] text-center">
                   {node.description.map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
@@ -164,7 +170,7 @@ const NodeSelectionSection = () => {
                 </div>
               </div>
 
-              <div className="relative w-fit [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px]">
+              <div className="relative w-fit [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px] text-center">
                 {node.cost}
                 <br />
                 {node.rewards}
@@ -181,7 +187,7 @@ const NodeSelectionSection = () => {
 };
 
 const EarningStepsSection = () => {
-  const maxWidthClassName = 'max-w-screen-xl w-full mx-auto px-4 mo:px-5';
+  const maxWidthClassName = 'max-w-[1140px] w-full mx-auto px-4 mo:px-5';
   return (
     <div className="flex flex-col items-center gap-11 mo:gap-8">
       <TitleText text="Get Started in 3 Steps" />
@@ -246,8 +252,9 @@ interface AGetANodeProps {
 export const AGetANode: React.FC<AGetANodeProps> = ({ children, className }) => {
   return (
     <div className={cn("w-full bg-black relative", className)}>
-      <div 
-        className="w-full h-full bg-bottom mo:bg-center bg-contain bg-no-repeat bg-[url(/GetANodePicture/bg1.png)]">
+     <div className="min-h-screen w-full bg-[url('/GetANodePicture/bg1.png')] bg-cover bg-no-repeat bg-center">
+
+
       
       
       <div className="absolute w-full h-full top-0 left-0">

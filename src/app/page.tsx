@@ -238,12 +238,12 @@ function FAQS() {
 export default function Home() {
 
   return <div>
-    <AHeader/>
-  <AGetANode/>
+    <AHeader />
+    <AGetANode />
 
 
   </div>
 
- 
+
 
 }

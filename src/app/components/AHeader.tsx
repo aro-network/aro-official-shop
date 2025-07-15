@@ -54,7 +54,7 @@ const AHeader = () => {
     { href: '/dashboard', tabName: 'Dashboard' },
     { href: dashboarSignup, tabName: 'Get Started' },
   ];
-  const maxWidthClassName = 'max-w-[1140px] px-4 w-full mx-auto'
+  const maxWidthClassName = 'max-w-[1440px] px-4 w-full mx-auto'
 
 
 

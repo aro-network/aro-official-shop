@@ -13,11 +13,11 @@ export const AAroPod = () => {
     <div className="h-screen bg-no-repeat bg-[url(/AroPodbg.png)]">
       <div className={cn("flex items-center  mx-auto relative mo:px-0 h-full w-full  flex-wrap  ", maxWidthClassName)}>
         <div className=" text-white mo:gap-11  flex items-center justify-center text-nowrap md:flex-wrap-reverse mo:flex-wrap-reverse">
-          <div className=" ">
+          <div className="  ">
             <div className="font-SGrotesk font-bold text-[134px] mo:text-5xl mo:text-center md:text-center ">
               ARO Pod
             </div>
-            <div className="text-[26px] mo:text-sm mo:text-center mo:mt-3 text-[#D3D3D6]  md:text-center">
+            <div className="text-[26px] mo:text-sm mo:text-center mo:mt-3 text-[#D3D3D6] ">
               A plug-and-play device that runs 24/7 with<br /> low energy use.<br />
               Best for household runners.
             </div>

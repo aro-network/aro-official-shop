@@ -48,7 +48,7 @@ const AHeader = () => {
 
   const dashboarSignup = 'https://devnet-dashboard.aro.network/signup'
   const headerTabList = [
-    { href: '/get-a-node', tabName: 'Get A Node' },
+    { href: '/get-a-node', tabName: 'Get a Node' },
     { href: 'https://medium.com/@AroNetwork', tabName: 'Blog' },
     { href: 'https://docs.aro.network/', tabName: 'Docs' },
     { href: '/dashboard', tabName: 'Dashboard' },
@@ -63,7 +63,7 @@ const AHeader = () => {
       <div className="bg-[#07070A] flex w-full h-[71px] mo:h-[56px]">
         <div className={cn("flex items-center gap-5 mx-auto relative mo:px-0", maxWidthClassName)}>
           <div className="px-4 flex w-full justify-between">
-            <Link href={'/'} className=" flex items-center mr-auto">
+            <Link href={'https://aro.network'} className=" flex items-center mr-auto">
               <img alt="Logo" src="/aro-logo.svg" className="w-[205px] h-auto mo:w-[158px]" />
             </Link>
             <div className="flex items-center gap-5 mo:hidden">

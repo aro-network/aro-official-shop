@@ -20,28 +20,15 @@ export const AAroPod = ({
             alt="ARO Pod background"
             src="/ARO Pod/AroPodbg.png"
             />
- {/*The logo from here*/}
       <div className="bg-black overflow-hidden w-full max-w-[609px] h-[408px] llg:h-[408px] lg:h-[650px] md:h-[550px] mo:h-[450px] sm:h-[350px] xsm:h-[400px] m-auto">
         <div className="relative h-[408px] llg:h-[408px] lg:h-[650px] md:h-[550px] mo:h-[450px] sm:h-[350px] xsm:h-[400px]">
           <img
             className="absolute w-full h-full top-0 left-0 object-cover"
             alt="ARO Pod Logo"
-            src="/ARO Pod/Podlogo.png"
+            src="/ARO Pod/PodAndButton.jpg"
             />
             </div>
             </div>
-            {/*To here*/}
-{/*The logo from here*/}
-      <div className="bg-black overflow-hidden w-full max-w-[1723px] h-[183px] llg:h-[183px] lg:h-[650px] md:h-[550px] mo:h-[450px] sm:h-[350px] xsm:h-[400px] m-auto">
-        <div className="relative h-[183px] llg:h-[183px] lg:h-[1723px] md:h-[550px] mo:h-[450px] sm:h-[350px] xsm:h-[400px]">  
-          <img
-            className="absolute w-full h-full top-0 left-0 object-cover"
-            alt="ARO Pod Button"
-            src="/ARO Pod/Podbutton.jpg"
-            />
-            </div>
-            </div>
-            {/*To here*/}
 
           <div className="absolute top-[200px] llg:top-[180px] lg:top-[150px] md:top-[120px] mo:top-[80px] sm:top-[60px] xsm:top-[80px] w-full flex justify-start items-start px-[150px] llg:px-[120px] lg:px-[80px] md:px-[60px] mo:px-[30px] sm:px-[20px] xsm:px-[24px]">
             <div className="flex flex-col max-w-[600px] llg:max-w-[550px] lg:max-w-[500px] md:max-w-[450px] mo:max-w-[400px] sm:max-w-full xsm:max-w-full">

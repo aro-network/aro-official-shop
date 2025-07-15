@@ -4,11 +4,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/app/utils/cn";
 import TitleText from "./TitleText";
 import LinerGridentBorder from "./LinerGridentBorder";
-// 临时移除AosAnimItem导入,后续需要添加正确的导入路径
-// import AosAnimItem from "./AosAnimItem";
-const AosAnimItem = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <div className={className}>{children}</div>
-);
+import  AosAnimItem  from "./AosAnimItem";
 import { MBtn } from "./Header";
 
 const Badge = ({ className, children, ...props }: { className?: string; children: React.ReactNode; [key: string]: any }) => {
@@ -46,73 +42,87 @@ const NodeSelectionSection = () => {
     }
   };
   
-  const nodeOptions = [
-    {
-      id: "aro-pod",
-      title: "ARO Pod",
-      image: "/GetANodePicture/AroPod.png",
-      buttonText: "Order ARO Pod",
-      description: [
-        "• A plug-and-play device that runs 24/7 with low energy use.",
-        "• Best for household runners.",
-      ],
-      cost: "Cost: $",
-      rewards: "Rewards: ⭐⭐⭐",
-      userFriendly: "User-friendly: ⭐⭐⭐",
-      comingSoon: false,
-      gradient:
+ const nodeOptions = [
+  {
+    id: "aro-pod",
+    title: "ARO Pod",
+    image: "/GetANodePicture/AroPod.png",
+    buttonText: "Order ARO Pod",
+    description: [
+      "• A plug-and-play device that runs 24/7 with low energy use.",
+      "• Best for household runners.",
+    ],
+    metrics: [
+      "Cost: $",
+      "Rewards: ⭐⭐⭐",
+      "User-friendly: ⭐⭐⭐"
+    ],
+    comingSoon: false,
+    gradient:
       "p-5 box-border bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06))," +
       "linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] " +
-      "backdrop-blur-[12px] rounded-3xl flex-none order-0"  },
-      {
-      id: "aro-lite",
-      title: "ARO Lite",
-      image: "/GetANodePicture/AroLite.png",
-      buttonText: "Download Extension (v1.0.4)",
-      description: [
-        "• A lightweight browser extension.",
-        "• Runs with zero cost and minimal effort.",
-      ],
-      cost: "Cost: 0",
-      rewards: "Rewards: ⭐",
-      userFriendly: "User-friendly: ⭐⭐⭐",
-      comingSoon: true,
-      gradient:
-"bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"   },
-    {
-      id: "aro-client",
-      title: "ARO Client",
-      image: "/GetANodePicture/AroClient.png",
-      buttonText: "Download .ISO",
-      description: [
-        "• A software image for your server or PC.",
-        "• Perfect for pro users with strong internet.",
-      ],
-      cost: "Cost: your device",
-      rewards: "Rewards: Flexible",
-      userFriendly: "User-friendly: ⭐",
-      comingSoon: false,
-      gradient:
-"bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"    },
-    {
-      id: "aro-link",
-      title: "ARO Link",
-      image: "/GetANodePicture/AroLink.png",
-      buttonText: "Order ARO Link",
-      description: [
-        "• A Wi-Fi router with a built-in ARO node.",
-        "• Ideal for business use",
-      ],
-      cost: "Cost: $$",
-      rewards: "Rewards: ⭐⭐⭐",
-      userFriendly: "User-friendly: ⭐⭐⭐",
-      comingSoon: true,
-      gradient:
-"bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(281.06deg,rgb(0,255,13,0.5)_-9.12%,rgb(115,115,115,0)_39.24%)] backdrop-blur-[12px] rounded-3xl flex-none order-3"    },
-  ];
+      "backdrop-blur-[12px] rounded-3xl flex-none order-0"
+  },
+  {
+    id: "aro-lite",
+    title: "ARO Lite",
+    image: "/GetANodePicture/AroLite.png",
+    buttonText: "Download Extension (v1.0.4)",
+    description: [
+      "• A lightweight browser extension.",
+      "• Runs with zero cost and minimal effort.",
+    ],
+    metrics: [
+      "Cost: 0",
+      "Rewards: ⭐",
+      "User-friendly: ⭐⭐⭐"
+    ],
+    comingSoon: true,
+    gradient:
+      "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"
+  },
+  {
+    id: "aro-client",
+    title: "ARO Client",
+    image: "/GetANodePicture/AroClient.png",
+    buttonText: "Download .ISO",
+    description: [
+      "• A software image for your server or PC.",
+      "• Perfect for pro users with strong internet.",
+    ],
+    metrics: [
+      "Cost: your device",
+      "Rewards: Flexible",
+      "User-friendly: ⭐"
+    ],
+    comingSoon: false,
+    gradient:
+      "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"
+  },
+  {
+    id: "aro-link",
+    title: "ARO Link",
+    image: "/GetANodePicture/AroLink.png",
+    buttonText: "Order ARO Link",
+    description: [
+      "• A Wi-Fi router with a built-in ARO node.",
+      "• Ideal for business use",
+    ],
+    metrics: [
+      "Cost: $$",
+      "Rewards: ⭐⭐⭐",
+      "User-friendly: ⭐⭐⭐"
+    ],
+    comingSoon: true,
+    gradient:
+      "text-left flex flex-col justify-between smd:justify-start " +
+      "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(281.06deg,rgb(0,255,13,0.5)_-9.12%,rgb(115,115,115,0)_39.24%)] backdrop-blur-[12px] rounded-3xl flex-none order-3"
+  }
+];
+
 
   const maxWidthClassName = 'max-w-[1140px] w-full mx-auto px-4 mo:px-5';
-  
+
   return (
     <div className={cn("flex flex-col items-center",maxWidthClassName)}>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(27.5rem,1fr))] mo:grid-cols-1 w-full gap-5 mo:gap-4">
@@ -127,7 +137,7 @@ const NodeSelectionSection = () => {
           //   backgroundClip: 'padding-box, border-box',
           // }}
         >
-          <CardContent className="p-5 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
+          <CardContent className="p-5 mo:p-4 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
             <div className="inline-flex flex-col items-start mo:items-center gap-4 relative flex-[0_0_auto]">
               <div
                 className="relative w-[196px] h-[130px] mo:w-[140px] mo:h-[90px] bg-center bg-no-repeat bg-contain"
@@ -144,10 +154,10 @@ const NodeSelectionSection = () => {
               </Button>
             </div>
 
-            <div className="flex flex-col w-[265px] mo:w-full items-center gap-5 mo:gap-4 relative">
-              <div className="flex flex-col items-center gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+            <div className="flex flex-col w-[265px] mo:w-full items-start gap-5 mo:gap-4 relative">
+              <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
                 <div className="inline-flex items-center gap-2.5 relative flex-[0_0_auto]">
-                  <h3 className="w-fit mt-[-1.00px] font-medium text-white text-xl tracking-[0] leading-[30px] whitespace-nowrap relative [font-family:'Poppins',Helvetica] text-center">
+                  <h3 className="w-fit mt-[-1.00px] font-medium text-white text-xl tracking-[0] leading-[30px] whitespace-nowrap relative [font-family:'Poppins',Helvetica]">
                     {node.title}
                   </h3>
 
@@ -160,7 +170,7 @@ const NodeSelectionSection = () => {
                   )}
                 </div>
 
-                <div className="relative self-stretch [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px] text-center">
+                <div className="relative self-stretch [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px]">
                   {node.description.map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
@@ -170,12 +180,12 @@ const NodeSelectionSection = () => {
                 </div>
               </div>
 
-              <div className="relative w-fit [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px] text-center">
-                {node.cost}
+              <div className="relative w-fit self-start [font-family:'Poppins',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[19.5px]">
+                {node.metrics[0]}
                 <br />
-                {node.rewards}
+                {node.metrics[1]}
                 <br />
-                {node.userFriendly}
+                {node.metrics[2]}
               </div>
             </div>
           </CardContent>
@@ -252,9 +262,8 @@ interface AGetANodeProps {
 export const AGetANode: React.FC<AGetANodeProps> = ({ children, className }) => {
   return (
     <div className={cn("w-full bg-black relative", className)}>
-     <div className="min-h-screen w-full bg-[url('/GetANodePicture/bg1.png')] bg-cover bg-no-repeat bg-center">
-
-
+      <div 
+        className="w-full h-full bg-bottom mo:bg-center bg-contain bg-no-repeat bg-[url(/GetANodePicture/bg1.png)]">
       
       
       <div className="absolute w-full h-full top-0 left-0">

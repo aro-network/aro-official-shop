@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/app/utils/cn";
 import TitleText from "./TitleText";
@@ -34,13 +34,26 @@ const CardContent = ({ className, children, ...props }: { className?: string; ch
 };
 
 const NodeSelectionSection = () => {
+  const [extensionInfo, setExtensionInfo] = useState<{ "version"?: string, "downloadUrl"?: string }>({ version: '', downloadUrl: '' })
   const router = useRouter();
 
-  const handleOrderClick = (nodeId: string) => {
-    if (nodeId === 'aro-pod') {
-      router.push('/aro-pod');
-    }
+  const handleOrderClick = (url: string) => {
+    if (!url) return
+    window.open(url)
   };
+
+
+  const fetchExtensionInfo = async () => {
+    fetch('https://preview-api.aro.network/api/common/liteNode/lastest')
+      .then((res) => res.json())
+      .then((res) => {
+        setExtensionInfo(res?.data?.version!)
+      })
+  }
+
+  useEffect(() => {
+    fetchExtensionInfo()
+  }, [])
 
   const nodeOptions = [
     {
@@ -58,6 +71,7 @@ const NodeSelectionSection = () => {
         "User-friendly: ⭐⭐⭐"
       ],
       comingSoon: false,
+      url: 'https://order.aro.network/product/aro-pod-node/',
       gradient:
         "p-5 box-border bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06))," +
         "linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] " +
@@ -77,6 +91,7 @@ const NodeSelectionSection = () => {
         "Rewards: ⭐⭐⭐",
         "User-friendly: ⭐⭐⭐"
       ],
+      url: '',
       comingSoon: true,
       gradient:
         "text-left flex flex-col justify-between smd:justify-start " +
@@ -98,6 +113,7 @@ const NodeSelectionSection = () => {
         "User-friendly: ⭐"
       ],
       comingSoon: false,
+      url: "https://download.aro.network/images/aro-client-latest.iso",
       gradient:
         "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"
     },
@@ -105,7 +121,7 @@ const NodeSelectionSection = () => {
       id: "aro-lite",
       title: "ARO Lite",
       image: "/GetANodePicture/AroLite.png",
-      buttonText: "Download Extension (v1.0.4)",
+      buttonText: `Download Extension (v${extensionInfo?.version || '0.0.1'})`,
       description: [
         "• A lightweight browser extension.",
         "• Runs with zero cost and minimal effort.",
@@ -116,6 +132,7 @@ const NodeSelectionSection = () => {
         "User-friendly: ⭐⭐⭐"
       ],
       comingSoon: true,
+      url: "https://chromewebstore.google.com/detail/aro-lite/dehgjeidddkjakjgnmpccdkkjdchiifh?hl=en-US&utm_source=ext_sidebar",
       gradient:
         "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"
     },
@@ -135,7 +152,7 @@ const NodeSelectionSection = () => {
             className="rounded-3xl"
           // className="flex w-full max-w-[544px] h-auto max-h-[216px] items-center gap-[30px] mo:gap-4 p-5 mo:p-4 mo:flex-col mo:text-center rounded-3xl border-2 border-solid border-transparent backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] relative overflow-hidden"
           // style={{
-          //   background: `padding-box linear-gradient(0deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.06) 100%), border-box ${node.gradient}`,
+          //   background: `padding - box linear - gradient(0deg, rgba(255, 255, 255, 0.06) 0 %, rgba(255, 255, 255, 0.06) 100 %), border - box ${ node.gradient } `,
           //   backgroundClip: 'padding-box, border-box',
           // }}
           >
@@ -148,7 +165,7 @@ const NodeSelectionSection = () => {
                 />
 
                 <Button
-                  onClick={() => handleOrderClick(node.id)}
+                  onClick={() => handleOrderClick(node.url)}
                   className="flex w-[196px] mo:w-full h-[30px] mo:h-[36px] items-center justify-center gap-2.5 px-9 mo:px-6 py-0 mo:py-1 rounded-3xl shadow-[0px_4px_4px_#00000040,inset_-1px_-1px_5.8px_#8b8b8b3b] bg-[linear-gradient(90deg,rgba(113,255,108,1)_0%,rgba(193,249,103,1)_100%)] hover:bg-[linear-gradient(90deg,rgba(113,255,108,0.9)_0%,rgba(193,249,103,0.9)_100%)] cursor-pointer">
                   <span className="relative w-fit [font-family:'Albert_Sans',Helvetica] font-medium text-[#11111c] text-xs mo:text-sm tracking-[0] leading-[normal] whitespace-nowrap mo:text-center">
                     {node.buttonText}

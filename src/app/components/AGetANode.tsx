@@ -47,7 +47,9 @@ const NodeSelectionSection = () => {
     fetch('https://preview-api.aro.network/api/common/liteNode/lastest')
       .then((res) => res.json())
       .then((res) => {
-        setExtensionInfo(res?.data?.version!)
+        console.log('aasdasdas', res?.data!);
+
+        setExtensionInfo(res?.data?.version! || '0.0.1')
       })
   }
 
@@ -55,6 +57,9 @@ const NodeSelectionSection = () => {
     fetchExtensionInfo()
   }, [])
 
+
+
+  console.log('extensionInfoextensionInfo', extensionInfo);
 
 
 
@@ -124,7 +129,7 @@ const NodeSelectionSection = () => {
       id: "aro-lite",
       title: "ARO Lite",
       image: "/aro-lite.png",
-      buttonText: `Download Extension (v${extensionInfo || '0.0.1'})`,
+      buttonText: `Download Extension`,
       description: [
         "• A lightweight browser extension.",
         "• Runs with zero cost and minimal effort.",

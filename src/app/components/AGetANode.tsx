@@ -55,11 +55,14 @@ const NodeSelectionSection = () => {
     fetchExtensionInfo()
   }, [])
 
+
+
+
   const nodeOptions = [
     {
       id: "aro-pod",
       title: "ARO Pod",
-      image: "/GetANodePicture/AroPod.png",
+      image: "/aro-pod.png",
       buttonText: "Order ARO Pod",
       description: [
         "• A plug-and-play device that runs 24/7 with low energy use.",
@@ -80,11 +83,11 @@ const NodeSelectionSection = () => {
     {
       id: "aro-link",
       title: "ARO Link",
-      image: "/GetANodePicture/AroLink.png",
+      image: "/aro-link.png",
       buttonText: "Order ARO Link",
       description: [
         "• A Wi-Fi router with a built-in ARO node.",
-        "• Ideal for business use",
+        "• Ideal for business use.",
       ],
       metrics: [
         "Cost: $$",
@@ -101,7 +104,7 @@ const NodeSelectionSection = () => {
     {
       id: "aro-client",
       title: "ARO Client",
-      image: "/GetANodePicture/AroClient.png",
+      image: "/aro-client.png",
       buttonText: "Download .ISO",
       description: [
         "• A software image for your server or PC.",
@@ -120,8 +123,8 @@ const NodeSelectionSection = () => {
     {
       id: "aro-lite",
       title: "ARO Lite",
-      image: "/GetANodePicture/AroLite.png",
-      buttonText: `Download Extension (v${extensionInfo?.version || '0.0.1'})`,
+      image: "/aro-lite.png",
+      buttonText: `Download Extension (${extensionInfo})`,
       description: [
         "• A lightweight browser extension.",
         "• Runs with zero cost and minimal effort.",
@@ -131,7 +134,7 @@ const NodeSelectionSection = () => {
         "Rewards: ⭐",
         "User-friendly: ⭐⭐⭐"
       ],
-      comingSoon: true,
+      comingSoon: false,
       url: "https://chromewebstore.google.com/detail/aro-lite/dehgjeidddkjakjgnmpccdkkjdchiifh?hl=en-US&utm_source=ext_sidebar",
       gradient:
         "bg-[linear-gradient(0deg,rgb(255,255,255,0.06),rgb(255,255,255,0.06)),linear-gradient(124.57deg,rgb(0,255,13,0.5)_-10.04%,rgb(115,115,115,0)_38.35%)] backdrop-blur-[12px] rounded-3xl flex-none order-0"
@@ -157,16 +160,18 @@ const NodeSelectionSection = () => {
           // }}
           >
             <CardContent className="p-5 mo:p-4 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
-              <div className="inline-flex flex-col items-start mo:items-center gap-4 relative flex-[0_0_auto]">
-                <div
-                  className="relative w-[196px] h-[130px] mo:w-[140px] mo:h-[90px] bg-center bg-no-repeat bg-contain"
-                  style={{ backgroundImage: `url(${node.image})` }}
-                  aria-label={`${node.title} image`}
-                />
+              <div className="inline-flex flex-col items-start mo:items-center gap-4 relative flex-[0_0_auto] mo:w-full">
+                <div className=" w-full h-[130px]  rounded-lg bg-[#FFFFFF26] mo:h-[130px]  p-5 ">
+                  <div
+                    className="bg-center bg-no-repeat bg-contain relative h-full"
+                    style={{ backgroundImage: `url(${node.image})` }}
+                    aria-label={`${node.title} image`}
+                  />
+                </div>
 
                 <Button
-                  onClick={() => handleOrderClick(node.url)}
-                  className="flex w-[196px] mo:w-full h-[30px] mo:h-[36px] items-center justify-center gap-2.5 px-9 mo:px-6 py-0 mo:py-1 rounded-3xl shadow-[0px_4px_4px_#00000040,inset_-1px_-1px_5.8px_#8b8b8b3b] bg-[linear-gradient(90deg,rgba(113,255,108,1)_0%,rgba(193,249,103,1)_100%)] hover:bg-[linear-gradient(90deg,rgba(113,255,108,0.9)_0%,rgba(193,249,103,0.9)_100%)] cursor-pointer">
+                  onClick={() => node.comingSoon ? null : handleOrderClick(node.url)}
+                  className={`flex w-[196px] ${node.comingSoon ? 'cursor-not-allowed' : 'cursor-default'} mo:w-full h-[30px] mo:h-[36px] items-center justify-center gap-2.5 px-9 mo:px-6 py-0 mo:py-1 rounded-3xl shadow-[0px_4px_4px_#00000040,inset_-1px_-1px_5.8px_#8b8b8b3b] bg-[linear-gradient(90deg,rgba(113,255,108,1)_0%,rgba(193,249,103,1)_100%)] hover:bg-[linear-gradient(90deg,rgba(113,255,108,0.9)_0%,rgba(193,249,103,0.9)_100%)] cursor-pointer`}>
                   <span className="relative w-fit [font-family:'Albert_Sans',Helvetica] font-medium text-[#11111c] text-xs mo:text-sm tracking-[0] leading-[normal] whitespace-nowrap mo:text-center">
                     {node.buttonText}
                   </span>
@@ -292,7 +297,7 @@ export const AGetANode: React.FC<AGetANodeProps> = ({ children, className }) => 
         <div className="relative z-10 pb-20 mo:pb-12 ">
           <div className="pt-[124px] mo:pt-16 pb-16 mo:pb-10">
             <div className="flex flex-col items-center gap-6 mo:gap-4 m-auto  px-16 mo:px-6">
-              <h1 className="bg-[linear-gradient(353deg,rgba(0,228,42,1)_17%,rgba(255,255,255,1)_59%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Poppins',Helvetica] font-bold text-transparent text-[55px] mo:text-[30px] tracking-[-2.75px] mo:tracking-[-1.50px] leading-[60.5px] mo:leading-[33px] text-center">
+              <h1 className="bg-[linear-gradient(353deg,rgba(0,228,42,1)_17%,rgba(255,255,255,1)_59%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Poppins',Helvetica] font-bold text-transparent text-[55px] mo:text-[30px] mo:tracking-[-1.50px] leading-[60.5px] mo:leading-[33px] text-center">
                 Pick Your ARO Node
               </h1>
               <p className="[font-family:'Poppins',Helvetica] font-normal text-[#d3d3d6] text-lg mo:text-sm text-center tracking-[0] leading-[28.8px] mo:leading-[22.4px] max-w-[850px] mo:max-w-[400px] px-4 mo:px-2">

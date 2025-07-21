@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { useRouter, } from "next/navigation"
 import { cn } from "../utils/cn"
@@ -38,23 +36,22 @@ const AHeader = () => {
   })
 
   const goTo = (urlpath: string) => {
-    if (urlpath.startsWith('/')) {
+    if (urlpath === '/blog') {
       r.push(urlpath)
     } else {
       window.open(urlpath, '_blank')
     }
-    setShowMenus(false)
   }
 
   const dashboarSignup = 'https://devnet-dashboard.aro.network/signup'
   const headerTabList = [
     { href: '/get-a-node', tabName: 'Get a Node' },
-    { href: 'https://medium.com/@AroNetwork', tabName: 'Blog' },
+    { href: 'https://medium.com/aronetwork', tabName: 'Blog', },
     { href: 'https://docs.aro.network/', tabName: 'Docs' },
     { href: '/dashboard', tabName: 'Dashboard' },
     { href: dashboarSignup, tabName: 'Get Started' },
   ];
-  const maxWidthClassName = 'max-w-[1440px] px-4 w-full mx-auto'
+  const maxWidthClassName = 'max-w-[1140px] px-4 w-full mx-auto'
 
 
 
@@ -62,27 +59,25 @@ const AHeader = () => {
     <div className="w-full mo:sticky top-0 z-50">
       <div className="bg-[#07070A] flex w-full h-[71px] mo:h-[56px]">
         <div className={cn("flex items-center gap-5 mx-auto relative mo:px-0", maxWidthClassName)}>
-          <div className="px-4 flex w-full justify-between">
-            <Link href={'https://aro.network'} className=" flex items-center mr-auto">
+          <div className="mo:px-4 flex w-full justify-between">
+            <Link href={'/'} className=" flex items-center mr-auto">
               <img alt="Logo" src="/aro-logo.svg" className="w-[205px] h-auto mo:w-[158px]" />
             </Link>
             <div className="flex items-center gap-5 mo:hidden">
               {
-                headerTabList.map((item, i) => {
-                  const isButton = i === headerTabList.length - 1;
-                  return <MBtn key={`head_${i}`}
-                    type={isButton ? '2' : '1'}
-                    contentClassName={isButton ? 'py-2.5' : ''}
-                    onClick={() => goTo(item.href)} content={item.tabName} className={isButton ? 'ml-4' : ''} />
-                })
+                headerTabList.map((item, i) =>
+                  <MBtn key={`head_${i}`}
+                    type={i === headerTabList.length - 1 ? '2' : '1'}
+                    contentClassName={i === headerTabList.length - 1 ? 'py-2.5' : ''}
+                    onClick={() => goTo(item.href)} content={item.tabName} className={i === headerTabList.length - 1 ? 'ml-4' : ''} />
+                )
               }
-
             </div>
 
             <MBtn ref={trigerRef} type="2" className="rounded-lg hidden mo:block" contentClassName="px-0.5 py-0 text-2xl hover:text-[#00E42A]" content={<IoMenu />} onClick={() => setShowMenus(!showMenus)} />
           </div>
-          <div ref={ref} className={cn("absolute top-full w-full bg-black transition-all p-5 flex-col gap-4 z-10", showMenus ? "flex" : "hidden")}>
-            {headerTabList.map((item, i) => <MBtn key={`head_${i}`} type="3" className="w-full" onClick={() => goTo(item.href)} content={item.tabName} />)}
+          <div ref={ref} className={cn("absolute top-full hidden w-full mo:flex bg-black transition-all p-5 flex-col gap-4  z-10", showMenus ? "translate-x-0" : "translate-x-full !hidden")}>
+            {headerTabList.slice(0, headerTabList.length - 1).map((item, i) => <MBtn key={`head_${i}`} type="3" className="w-full" onClick={() => goTo(item.href)} content={item.tabName} />)}
           </div>
         </div>
       </div>

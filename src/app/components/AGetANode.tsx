@@ -124,7 +124,7 @@ const NodeSelectionSection = () => {
       id: "aro-lite",
       title: "ARO Lite",
       image: "/aro-lite.png",
-      buttonText: `Download Extension (${extensionInfo})`,
+      buttonText: `Download Extension (v${extensionInfo || '0.0.1'})`,
       description: [
         "• A lightweight browser extension.",
         "• Runs with zero cost and minimal effort.",
@@ -146,7 +146,7 @@ const NodeSelectionSection = () => {
   const maxWidthClassName = 'max-w-[1140px] w-full mx-auto px-4 mo:px-5';
 
   return (
-    <div className={cn("flex flex-col items-center", maxWidthClassName)}>
+    <div className={cn("flex flex-col items-center overflow-hidden", maxWidthClassName)}>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(27.5rem,1fr))] mo:grid-cols-1 w-full gap-5 mo:gap-4">
         {nodeOptions.map((node, index) => (
           <LinerGridentBorder
@@ -161,7 +161,7 @@ const NodeSelectionSection = () => {
           >
             <CardContent className="p-5 mo:p-4 flex items-center gap-[30px] mo:flex-col mo:gap-4 w-full">
               <div className="inline-flex flex-col items-start mo:items-center gap-4 relative flex-[0_0_auto] mo:w-full">
-                <div className=" w-full h-[130px]  rounded-lg bg-[#FFFFFF26] mo:h-[130px]  p-5 ">
+                <div className=" w-full h-[130px]  rounded-lg mo:h-[130px]  p-5 ">
                   <div
                     className="bg-center bg-no-repeat bg-contain relative h-full"
                     style={{ backgroundImage: `url(${node.image})` }}
@@ -171,7 +171,7 @@ const NodeSelectionSection = () => {
 
                 <Button
                   onClick={() => node.comingSoon ? null : handleOrderClick(node.url)}
-                  className={`flex w-[196px] ${node.comingSoon ? 'cursor-not-allowed' : 'cursor-default'} mo:w-full h-[30px] mo:h-[36px] items-center justify-center gap-2.5 px-9 mo:px-6 py-0 mo:py-1 rounded-3xl shadow-[0px_4px_4px_#00000040,inset_-1px_-1px_5.8px_#8b8b8b3b] bg-[linear-gradient(90deg,rgba(113,255,108,1)_0%,rgba(193,249,103,1)_100%)] hover:bg-[linear-gradient(90deg,rgba(113,255,108,0.9)_0%,rgba(193,249,103,0.9)_100%)] cursor-pointer`}>
+                  className={`flex w-[196px] ${node.comingSoon ? '!cursor-not-allowed' : 'cursor-default'} mo:w-full h-[30px] mo:h-[36px] items-center justify-center gap-2.5 px-9 mo:px-6 py-0 mo:py-1 rounded-3xl shadow-[0px_4px_4px_#00000040,inset_-1px_-1px_5.8px_#8b8b8b3b] bg-[linear-gradient(90deg,rgba(113,255,108,1)_0%,rgba(193,249,103,1)_100%)] hover:bg-[linear-gradient(90deg,rgba(113,255,108,0.9)_0%,rgba(193,249,103,0.9)_100%)] cursor-pointer`}>
                   <span className="relative w-fit [font-family:'Albert_Sans',Helvetica] font-medium text-[#11111c] text-xs mo:text-sm tracking-[0] leading-[normal] whitespace-nowrap mo:text-center">
                     {node.buttonText}
                   </span>
@@ -285,7 +285,7 @@ interface AGetANodeProps {
 
 export const AGetANode: React.FC<AGetANodeProps> = ({ children, className }) => {
   return (
-    <div className={cn("w-full bg-black relative", className)}>
+    <div className={cn("w-full bg-black relative overflow-hidden", className)}>
       <div
         className="w-container flex justify-center m-auto md:w-full mo:w-full  h-full bg-bottom  bg-contain bg-no-repeat bg-[url(/GetANodePicture/bg1.png)]">
 

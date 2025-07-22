@@ -43,19 +43,19 @@ const NodeSelectionSection = () => {
   };
 
 
-  const fetchExtensionInfo = async () => {
-    fetch('https://preview-api.aro.network/api/common/liteNode/lastest')
-      .then((res) => res.json())
-      .then((res) => {
-        console.log('aasdasdas', res?.data!);
+  // const fetchExtensionInfo = async () => {
+  //   fetch('https://preview-api.aro.network/api/common/liteNode/lastest')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       console.log('aasdasdas', res?.data!);
 
-        setExtensionInfo(res?.data?.version! || '0.0.1')
-      })
-  }
+  //       setExtensionInfo(res?.data?.version! || '0.0.1')
+  //     })
+  // }
 
-  useEffect(() => {
-    fetchExtensionInfo()
-  }, [])
+  // useEffect(() => {
+  //   fetchExtensionInfo()
+  // }, [])
 
 
 
@@ -269,7 +269,7 @@ const EarningStepsSection = () => {
   );
 };
 const GetStartedSection = () => {
-  const dashboardSignup = "https://devnet-dashboard.aro.network/signup";
+  const dashboardSignup = "https://dashboard.aro.network/signup";
 
   return (
     <AosAnimItem className="flex justify-center w-full">

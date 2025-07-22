@@ -193,7 +193,7 @@ const NodeSelectionSection = () => {
                     {node.comingSoon && (
                       <Badge className="inline-flex items-center justify-center gap-2.5 px-1 py-0.5 relative flex-[0_0_auto] bg-[#02b421] rounded">
                         <span className="relative w-fit [font-family:'Poppins',Helvetica] font-medium text-white text-[8px] tracking-[0.08px] leading-[8px] whitespace-nowrap">
-                          Coming Soon
+                          Comming Soon
                         </span>
                       </Badge>
                     )}

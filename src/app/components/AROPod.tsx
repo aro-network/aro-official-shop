@@ -3,6 +3,7 @@ import { AutoFlip } from "./AutoFlip";
 import { MBtn } from "./Header";
 import { cn } from "../utils/cn";
 import { debounce } from "../utils/common";
+import Skeleton from "./ASkeleton";
 
 const AROPod = () => {
   const [isEnd, setIsEnd] = useState(false);
@@ -10,7 +11,6 @@ const AROPod = () => {
   const [resultInfo, setResultInfo] = useState<any>(null);
   const [errorInfo, setErrorInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-
   const couponRef = useRef(couponCode);
   couponRef.current = couponCode;
 
@@ -54,7 +54,8 @@ const AROPod = () => {
           playsInline
           webkit-playsinline="true"
           src="./ARO-Pod-video.mp4"
-          className="absolute top-0 left-0 h-full w-full object-cover z-0"
+          className={cn("absolute top-0 left-0 h-full w-full object-cover z-0")}
+          preload="auto"
           autoPlay
           muted
           onEnded={() => setIsEnd(true)}

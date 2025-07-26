@@ -14,11 +14,19 @@ const AROPod = () => {
   const couponRef = useRef(couponCode);
   couponRef.current = couponCode;
 
+  const DEFAULT_FORM_URL = 'https://aronetwork.fillout.com/t/ehsGwPuoVhus'
   const applyCoupon = useCallback(() => {
-    if (!couponRef.current || loading) return;
+    if (loading) return;
     setLoading(true);
     setErrorInfo(null);
     setResultInfo(null);
+
+    if (!couponRef.current) {
+      setResultInfo({ code: 200, data: { formUrl: DEFAULT_FORM_URL } });
+      setLoading(false);
+      return;
+    }
+
     fetch(`https://staging-api.aro.network/api/common/order/coupon/${couponRef.current}`)
       .then((res) => res.json())
       .then((data) => {
@@ -37,6 +45,7 @@ const AROPod = () => {
   const onApply = useRef(debounce(applyCoupon, 500)).current;
 
   const showCheckmark = !!couponCode && resultInfo?.code === 200;
+  const canPreOrder = !couponCode || resultInfo?.code === 200;
 
   return (
     <Fragment>
@@ -99,7 +108,7 @@ const AROPod = () => {
                     </div>
 
                     <button
-                      disabled={loading || !couponCode}
+                      disabled={loading}
                       onClick={onApply}
                       className={cn(
                         "w-[100px] flip_item h-12 rounded-full bg-white/10 border border-white backdrop-blur-sm text-white font-semibold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed",
@@ -116,21 +125,18 @@ const AROPod = () => {
                   <MBtn
                     type="2"
                     onClick={() => {
-                      if (resultInfo?.data?.formUrl) {
-                        window.open(resultInfo.data.formUrl, "_blank");
-                        setErrorInfo(null);
-                        setResultInfo(null);
-                        setCouponCode("");
-                      }
+                      const url = resultInfo?.data?.formUrl || DEFAULT_FORM_URL;
+                      window.open(url, "_blank");
+                      setErrorInfo(null);
+                      setResultInfo(null);
+                      setCouponCode("");
                     }}
                     content="Pre-order Now"
                     className={cn(
                       "mx-auto mb-[124px] mo:mb-16 font-Space_Grotesk",
                       {
-                        "pointer-events-none cursor-not-allowed opacity-50":
-                          !resultInfo?.data?.formUrl,
-                        "pointer-events-auto cursor-pointer opacity-100":
-                          !!resultInfo?.data?.formUrl,
+                        "pointer-events-none cursor-not-allowed opacity-50": !canPreOrder,
+                        "pointer-events-auto cursor-pointer opacity-100": canPreOrder,
                       }
                     )}
                   />

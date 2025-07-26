@@ -16,11 +16,9 @@ const AROPod = () => {
 
   const applyCoupon = useCallback(() => {
     if (!couponRef.current || loading) return;
-
     setLoading(true);
     setErrorInfo(null);
     setResultInfo(null);
-
     fetch(`https://staging-api.aro.network/api/common/order/coupon/${couponRef.current}`)
       .then((res) => res.json())
       .then((data) => {

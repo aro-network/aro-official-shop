@@ -17,6 +17,9 @@ dependencies:
   '@formkit/auto-animate':
     specifier: ^0.8.1
     version: 0.8.1
+  '@gsap/react':
+    specifier: ^2.1.1
+    version: 2.1.1
   '@heroui/accordion':
     specifier: ^2.2.16
     version: 2.2.16(@heroui/system@2.4.18)(@heroui/theme@2.4.15)(framer-motion@12.23.3)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
@@ -50,6 +53,9 @@ dependencies:
   ethers:
     specifier: ^6.13.5
     version: 6.13.5
+  gsap:
+    specifier: ^3.12.5
+    version: 3.12.5
   keen-slider:
     specifier: ^6.8.6
     version: 6.8.6
@@ -1561,6 +1567,13 @@ packages:
 
   /@formkit/auto-animate@0.8.1:
     resolution: {integrity: sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig==}
+    dev: false
+
+  /@gsap/react@2.1.1:
+    resolution: {integrity: sha512-apGPRrmpqxvl1T6Io1KgT8tFU+IuACI6z4zmT7t8+PASserJeLVRFJdSNUFA2Xb/eVkZI1noE8LIrY/w/oJECw==}
+    dependencies:
+      gsap: 3.12.5
+      react: 18.3.1
     dev: false
 
   /@heroui/accordion@2.2.16(@heroui/system@2.4.18)(@heroui/theme@2.4.15)(framer-motion@12.23.3)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
@@ -6798,6 +6811,10 @@ packages:
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
+
+  /gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
+    dev: false
 
   /has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}

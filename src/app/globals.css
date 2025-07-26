@@ -17,7 +17,6 @@
 body {
   font-size: 16px;
   color: #7c7c7c;
-  background: #0d131b;
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
   overflow-x: hidden;
@@ -81,8 +80,8 @@ input::placeholder {
 @media (max-width: 1001px) {
    input {
     font-size: 12px;
-    padding: 15px;
-    width: 300px;
+    padding-left: 10px;
+    width: 320px;
     font-family: var(--font-albert-sans);
   }
 }

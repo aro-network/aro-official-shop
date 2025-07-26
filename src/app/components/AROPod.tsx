@@ -1,9 +1,8 @@
-import { Fragment, useCallback, useState, useRef } from "react";
+import { Fragment, useCallback, useState, useRef, useEffect } from "react";
 import { AutoFlip } from "./AutoFlip";
 import { MBtn } from "./Header";
 import { cn } from "../utils/cn";
 import { debounce } from "../utils/common";
-import Skeleton from "./ASkeleton";
 
 const AROPod = () => {
   const [isEnd, setIsEnd] = useState(false);
@@ -11,6 +10,7 @@ const AROPod = () => {
   const [resultInfo, setResultInfo] = useState<any>(null);
   const [errorInfo, setErrorInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true)
   const couponRef = useRef(couponCode);
   couponRef.current = couponCode;
 
@@ -47,17 +47,44 @@ const AROPod = () => {
   const showCheckmark = !!couponCode && resultInfo?.code === 200;
   const canPreOrder = !couponCode || resultInfo?.code === 200;
 
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+
+
+  useEffect(() => {
+    const loadVideo = async () => {
+      try {
+        const response = await fetch("/ARO-Pod-video.mp4");
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        setVideoUrl(blobUrl);
+      } catch (err) {
+        console.error("load error:", err);
+      }
+    };
+
+    loadVideo();
+  }, []);
+
+
+
+
   return (
     <Fragment>
       <div className="relative h-screen w-full overflow-hidden">
+        {isLoaded && (
+          <div className="absolute inset-0 bg-gray-300 animate-pulse flex items-center justify-center">
+            <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
         <video
           playsInline
           webkit-playsinline="true"
-          src="./ARO-Pod-video.mp4"
+          src={videoUrl || undefined}
           className={cn("absolute top-0 left-0 h-full w-full object-cover z-0")}
           preload="auto"
           autoPlay
           muted
+          onLoadedData={() => setIsLoaded(false)}
           onEnded={() => setIsEnd(true)}
         />
 
@@ -79,7 +106,7 @@ const AROPod = () => {
                 <div className="text-center flex flex-col gap-4">
                   <div className="text-lg flip_item">Got a Coupon Code? Enter it here.</div>
                   <div className="flex gap-2.5 items-center justify-center flip_item">
-                    <div className="relative w-[220px]">
+                    <div className="relative w-[230px]">
                       <input
                         maxLength={6}
                         value={couponCode}
@@ -92,7 +119,7 @@ const AROPod = () => {
                           "w-full h-12 rounded-full text-base bg-white/10 border border-white backdrop-blur-sm px-4 pr-10 text-white placeholder:text-white/70 transition-colors duration-300",
                           { "border-red-700": !!errorInfo?.message }
                         )}
-                        placeholder="Enter Code"
+                        placeholder="Enter Code (optional) "
                         autoComplete="off"
                       />
                       {showCheckmark && (

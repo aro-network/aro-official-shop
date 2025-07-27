@@ -27,7 +27,7 @@ const AROPod = () => {
       return;
     }
 
-    fetch(`https://staging-api.aro.network/api/common/order/coupon/${couponRef.current}`)
+    fetch(`https://preview-api.aro.network/api/common/order/coupon/${couponRef.current}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.code === 200) {

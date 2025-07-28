@@ -3,8 +3,8 @@
 import "aos/dist/aos.css"
 import React from "react"
 import AHeader from "./components/AHeader"
-import AROPod from "./components/AROPod"
-
+import dynamic from "next/dynamic"
+const AROPod = dynamic(() => import('./components/AROPod'), { ssr: false });
 
 export default function Home() {
 
@@ -12,9 +12,6 @@ export default function Home() {
     <AHeader />
     <AROPod />
 
-
   </div>
-
-
 
 }

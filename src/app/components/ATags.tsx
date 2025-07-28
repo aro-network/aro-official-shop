@@ -124,7 +124,7 @@ const ATags = () => {
 
         </div>
       </div>
-        : <Skeleton className="h-[12.5rem] w-full rounded-[3.0625rem] " />
+        : <Skeleton />
       }
       <div className=" grid grid-cols-[repeat(auto-fill,minmax(21.875rem,1fr))] justify-between  gap-5 mt-[5rem] mo:mt-[1.875rem] ">
         {!loading ? posts.map((item) => {
@@ -150,7 +150,7 @@ const ATags = () => {
           </div>
         })
           :
-          <Skeleton className="h-[31.25rem] w-full rounded-[3.0625rem] " />
+          <Skeleton />
         }
 
       </div>

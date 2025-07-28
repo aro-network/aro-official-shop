@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { PropsWithChildren, ReactNode, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { cn } from "../utils/cn";
 
 gsap.registerPlugin(useGSAP);

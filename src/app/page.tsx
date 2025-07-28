@@ -1,6 +1,5 @@
 'use client'
 
-import Aos from "aos"
 import "aos/dist/aos.css"
 import React from "react"
 import AHeader from "./components/AHeader"

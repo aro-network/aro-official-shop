@@ -122,7 +122,7 @@ const Blog = () => {
               </div>
             </div>
             :
-            <Skeleton className="h-[31.25rem] w-full rounded-3xl mt-[3.125rem]" />
+            <Skeleton />
 
           }
           <div className="mo:py-[3.125rem] mt-[3.125rem]">
@@ -168,7 +168,7 @@ const Blog = () => {
               </div>
             })
               :
-              <Skeleton className="h-[25rem] w-full rounded-[3.0625rem] " />
+              <Skeleton />
             }
 
           </div>

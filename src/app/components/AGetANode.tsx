@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import { cn } from "@/app/utils/cn";
 import TitleText from "./TitleText";
 import LinerGridentBorder from "./LinerGridentBorder";
@@ -34,8 +33,8 @@ const CardContent = ({ className, children, ...props }: { className?: string; ch
 };
 
 const NodeSelectionSection = () => {
-  const [extensionInfo, setExtensionInfo] = useState<{ "version"?: string, "downloadUrl"?: string }>({ version: '', downloadUrl: '' })
-  const router = useRouter();
+  // const [extensionInfo, setExtensionInfo] = useState<{ "version"?: string, "downloadUrl"?: string }>({ version: '', downloadUrl: '' })
+  // const router = useRouter();
 
   const handleOrderClick = (url: string) => {
     if (!url) return
@@ -59,7 +58,7 @@ const NodeSelectionSection = () => {
 
 
 
-  console.log('extensionInfoextensionInfo', extensionInfo);
+  // console.log('extensionInfoextensionInfo', extensionInfo);
 
 
 

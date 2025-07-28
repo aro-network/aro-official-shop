@@ -55,7 +55,7 @@ const AInfo = () => {
                 className="w-full h-[500px] mo:h-auto rounded-3xl shadow-box"
               />
             ) : (
-              <Skeleton className="h-[31.25rem] mo:h-[18.75rem] w-full rounded-3xl " />
+              <Skeleton />
 
             )}
 
@@ -72,7 +72,7 @@ const AInfo = () => {
                   }} key={tab.name} className="bg-[#4281FF] hover:bg-[#B0C4DE] text-base w-auto flex gap-1 py-1 px-[.8125rem] text-white rounded-[1.25rem]">{tab.name}</button>
                 })
                   :
-                  <Skeleton className="h-screen w-full " />
+                  <Skeleton />
 
                 }
               </div>

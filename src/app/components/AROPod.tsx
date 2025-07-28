@@ -3,15 +3,19 @@ import { AutoFlip } from "./AutoFlip";
 import { MBtn } from "./Header";
 import { cn } from "../utils/cn";
 import { debounce } from "../utils/common";
+import { useSearchParams } from "next/navigation";
 
 const AROPod = () => {
+  const sq = useSearchParams();
+
   const [isEnd, setIsEnd] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
+  const [couponCode, setCouponCode] = useState(sq.get("coupon") || "");
   const [resultInfo, setResultInfo] = useState<any>(null);
   const [errorInfo, setErrorInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(true)
   const couponRef = useRef(couponCode);
+
   couponRef.current = couponCode;
 
   const DEFAULT_FORM_URL = 'https://aronetwork.fillout.com/t/ehsGwPuoVhus'
@@ -41,6 +45,14 @@ const AROPod = () => {
       })
       .finally(() => setLoading(false));
   }, [loading]);
+
+
+  useEffect(() => {
+    if (sq.get("coupon")) {
+      onApply()
+    }
+
+  }, [sq.get("coupon")])
 
   const onApply = useRef(debounce(applyCoupon, 500)).current;
 

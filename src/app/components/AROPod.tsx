@@ -121,7 +121,6 @@ const AROPod = () => {
                   <div className="flex gap-2.5 items-center justify-center flip_item">
                     <div className="relative w-[230px]">
                       <input
-                        maxLength={6}
                         value={couponCode}
                         onChange={(e) => {
                           setResultInfo(null);

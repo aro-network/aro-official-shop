@@ -83,7 +83,7 @@ const AROPod = () => {
 
   return (
     <Fragment>
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-screen w-full">
         {isLoaded && (
           <div className="absolute inset-0 bg-gray-300 animate-pulse flex items-center justify-center">
             <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
@@ -102,9 +102,9 @@ const AROPod = () => {
         />
 
         {isEnd && (
-          <div className="absolute z-10 h-full w-full flex">
+          <div className="absolute z-10 h-full w-full flex ">
             <AutoFlip className="flex flex-col w-full h-full items-center justify-between bg-black/30 text-white mo:px-5">
-              <div className="h-full flex flex-col justify-between py-[200px] mo:gap-20">
+              <div className="h-full flex flex-col justify-between py-[100px]  mo:gap-20 o">
                 <div>
                   <h1 className="text-[60px] font-bold mb-2.5 flip_item text-center">
                     ARO Pod
@@ -118,7 +118,7 @@ const AROPod = () => {
 
                 <div className="text-center flex flex-col gap-4">
                   <div className="text-lg flip_item">Got a Coupon Code? Enter it here.</div>
-                  <div className="flex gap-2.5 items-center justify-center flip_item">
+                  <div className="flex gap-2.5 items-center justify-center flip_item ">
                     <div className="relative w-[230px]">
                       <input
                         value={couponCode}
@@ -173,14 +173,30 @@ const AROPod = () => {
                     }}
                     content="Pre-order Now"
                     className={cn(
-                      "mx-auto mb-[124px] mo:mb-16 font-Space_Grotesk",
+                      "mx-auto mb-[100px] mo:mb-16 font-Space_Grotesk",
                       {
                         "pointer-events-none cursor-not-allowed opacity-50": !canPreOrder,
                         "pointer-events-auto cursor-pointer opacity-100": canPreOrder,
                       }
                     )}
                   />
+
+                  <div className="text-center ">
+                    <button
+                      onClick={() => window.open('https://aronetwork.fillout.com/t/oqSdQBtNnfus', '_blank')}
+                      className={cn(
+                        " flip_item h-12  px-5 rounded-full bg-white/10 border border-white backdrop-blur-sm text-white font-semibold transition-colors duration-300 ",
+                      )}
+                    >
+                      Report an issue
+                    </button>
+
+                  </div>
+
                 </div>
+
+
+
               </div>
             </AutoFlip>
           </div>
